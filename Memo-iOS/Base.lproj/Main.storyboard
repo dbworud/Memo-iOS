@@ -3,12 +3,13 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Memo-->
+        <!--메모-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="Memo_iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -16,16 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Let-M1-mqC">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Let-M1-mqC">
+                                <rect key="frame" x="20" y="108" width="374" height="704"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemoCell" textLabel="DeN-Nj-tTQ" detailTextLabel="pGm-Wt-Ivl" style="IBUITableViewCellStyleSubtitle" id="cDV-gd-TwE">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="55.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="374" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cDV-gd-TwE" id="p4p-PH-yIj">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="55.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DeN-Nj-tTQ">
@@ -47,13 +47,35 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwM-H7-qmc">
+                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="m8N-sq-nSn"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="PmV-D3-Yh6"/>
+                                    <barButtonItem systemItem="compose" id="fGN-iU-LlT">
+                                        <connections>
+                                            <segue destination="qBl-We-aVi" kind="show" id="a9y-YE-V2P"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                                <color key="tintColor" name="AccentColor"/>
+                            </toolbar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Let-M1-mqC" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="6Ui-hQ-Q7C"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bwM-H7-qmc" secondAttribute="bottom" id="HB0-ge-JyH"/>
+                            <constraint firstItem="Let-M1-mqC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="NuH-pc-n1q"/>
+                            <constraint firstItem="bwM-H7-qmc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="drk-5u-ZjD"/>
+                            <constraint firstItem="Let-M1-mqC" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-20" id="oAS-d2-cY7"/>
+                            <constraint firstItem="bwM-H7-qmc" firstAttribute="top" secondItem="Let-M1-mqC" secondAttribute="bottom" id="qT3-V8-iYC"/>
+                            <constraint firstItem="bwM-H7-qmc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="y2J-7t-EOq"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Memo" id="foB-4V-5N5">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="MVm-3f-plB"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="메모" id="foB-4V-5N5"/>
                     <connections>
                         <outlet property="tableView" destination="Let-M1-mqC" id="mob-lj-JiG"/>
                     </connections>
@@ -61,6 +83,56 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="710.14492753623199" y="88.392857142857139"/>
+        </scene>
+        <!--Compose View Controller-->
+        <scene sceneID="lWc-z8-gzc">
+            <objects>
+                <viewController id="qBl-We-aVi" customClass="ComposeViewController" customModule="Memo_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ehY-tQ-Iqx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="G0a-bv-Hzw">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="PwO-jU-z2T"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="PwO-jU-z2T" firstAttribute="bottom" secondItem="G0a-bv-Hzw" secondAttribute="bottom" id="Gv6-P4-OjY"/>
+                            <constraint firstItem="PwO-jU-z2T" firstAttribute="trailing" secondItem="G0a-bv-Hzw" secondAttribute="trailing" id="Jlk-bT-jB7"/>
+                            <constraint firstItem="G0a-bv-Hzw" firstAttribute="leading" secondItem="PwO-jU-z2T" secondAttribute="leading" id="oPR-9x-HWQ"/>
+                            <constraint firstItem="G0a-bv-Hzw" firstAttribute="top" secondItem="PwO-jU-z2T" secondAttribute="top" id="var-Hk-k2S"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="ECc-1W-9tl">
+                        <rightBarButtonItems>
+                            <barButtonItem title="완료" id="a8t-HW-e6U">
+                                <color key="tintColor" name="AccentColor"/>
+                                <connections>
+                                    <action selector="save:" destination="qBl-We-aVi" id="dWv-wa-vqi"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="ellipsis.circle" catalog="system" id="svs-Gu-7pm">
+                                <color key="tintColor" name="AccentColor"/>
+                                <connections>
+                                    <action selector="addLineOrGrid:" destination="qBl-We-aVi" id="kYV-nd-ctt"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="memoTextView" destination="G0a-bv-Hzw" id="R1D-WL-WNe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b3D-Z1-g3F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1564" y="-254"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="kKm-rT-oI1">
@@ -81,7 +153,15 @@
             <point key="canvasLocation" x="-200.00000000000003" y="88.392857142857139"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="AccentColor"/>
     <resources>
+        <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="AccentColor">
+            <color red="0.76060940520931974" green="0.62843943341723074" blue="0.33929940749246168" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

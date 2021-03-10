@@ -16,6 +16,7 @@
 		4F2E148A25F8577800DBB522 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E148925F8577800DBB522 /* Memo.swift */; };
 		4F2E148F25F85D6000DBB522 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E148E25F85D6000DBB522 /* MainViewController.swift */; };
 		4F2E149225F85D6B00DBB522 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E149125F85D6B00DBB522 /* ComposeViewController.swift */; };
+		4F39121025F877E700B6AF55 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39120F25F877E700B6AF55 /* UIViewController+Alert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		4F2E148925F8577800DBB522 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		4F2E148E25F85D6000DBB522 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4F2E149125F85D6B00DBB522 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		4F39120F25F877E700B6AF55 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 		4F2E146E25F856F600DBB522 /* Memo-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				4F39120E25F877D700B6AF55 /* Extension */,
 				4F2E148825F8575A00DBB522 /* ViewController */,
 				4F2E148725F8575500DBB522 /* Model */,
 				4F2E146F25F856F600DBB522 /* AppDelegate.swift */,
@@ -90,6 +93,14 @@
 				4F2E149125F85D6B00DBB522 /* ComposeViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4F39120E25F877D700B6AF55 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4F39120F25F877E700B6AF55 /* UIViewController+Alert.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +179,7 @@
 				4F2E149225F85D6B00DBB522 /* ComposeViewController.swift in Sources */,
 				4F2E148A25F8577800DBB522 /* Memo.swift in Sources */,
 				4F2E148F25F85D6000DBB522 /* MainViewController.swift in Sources */,
+				4F39121025F877E700B6AF55 /* UIViewController+Alert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

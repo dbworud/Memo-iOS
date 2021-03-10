@@ -30,8 +30,8 @@ class MainViewController: UIViewController {
         tableView.dataSource = self
         
         navigationItem.searchController = searchController
-        
-        
+
+        self.navigationController?.navigationBar.tintColor = UIColor(named: "AccentColor")
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
