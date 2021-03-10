@@ -21,6 +21,7 @@
 		4F39121A25F883C400B6AF55 /* UIButton+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39121925F883C400B6AF55 /* UIButton+Theme.swift */; };
 		4F39121D25F898FB00B6AF55 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39121C25F898FB00B6AF55 /* DetailViewController.swift */; };
 		4F39122125F89FB900B6AF55 /* DateFormatter+Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39122025F89FB900B6AF55 /* DateFormatter+Locale.swift */; };
+		4F39122625F8E25B00B6AF55 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39122525F8E25B00B6AF55 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		4F39121925F883C400B6AF55 /* UIButton+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Theme.swift"; sourceTree = "<group>"; };
 		4F39121C25F898FB00B6AF55 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		4F39122025F89FB900B6AF55 /* DateFormatter+Locale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Locale.swift"; sourceTree = "<group>"; };
+		4F39122525F8E25B00B6AF55 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 		4F2E146E25F856F600DBB522 /* Memo-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				4F39122425F8E25000B6AF55 /* Data */,
 				4F39120E25F877D700B6AF55 /* Extension */,
 				4F2E148825F8575A00DBB522 /* ViewController */,
 				4F2E148725F8575500DBB522 /* Model */,
@@ -113,6 +116,14 @@
 				4F39122025F89FB900B6AF55 /* DateFormatter+Locale.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		4F39122425F8E25000B6AF55 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4F39122525F8E25B00B6AF55 /* DataManager.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4F39121A25F883C400B6AF55 /* UIButton+Theme.swift in Sources */,
+				4F39122625F8E25B00B6AF55 /* DataManager.swift in Sources */,
 				4F2E147A25F856F600DBB522 /* Memo_iOS.xcdatamodeld in Sources */,
 				4F2E147025F856F600DBB522 /* AppDelegate.swift in Sources */,
 				4F2E147225F856F600DBB522 /* SceneDelegate.swift in Sources */,

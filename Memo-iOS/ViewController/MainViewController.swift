@@ -32,21 +32,26 @@ class MainViewController: UIViewController {
         configureUI()
         token = NotificationCenter.default.addObserver(forName: ComposeViewController.newMemoDidInsert,
                                                object: nil,
-                                               queue: OperationQueue.main) { [weak self] noti in
+                                               queue: OperationQueue.main)
+        { [weak self] noti in
             self?.tableView.reloadData()
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        tableView.reloadData()
+
+        // ViewController가 화면에 보여지기 직전에 호출, 네트워크 혹은 데이터 fetch해서 붙여넣기
+        DataManager.shared.fetchMemo()
+        tableView.reloadData()
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // sender활용해서 몇 번째 셀이 선택됐는지 알아야 함
         if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
             if let vc = segue.destination as?  DetailViewController {
-                vc.memo = Memo.dummyMemoList[indexPath.row]
+                vc.memo = DataManager.shared.memoList[indexPath.row]
             }
         }
     }
@@ -79,15 +84,15 @@ class MainViewController: UIViewController {
 // MARK: - Extension
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Memo.dummyMemoList.count
+        return DataManager.shared.memoList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell", for: indexPath)
         
-        let memo = Memo.dummyMemoList[indexPath.row]
+        let memo = DataManager.shared.memoList[indexPath.row]
         cell.textLabel?.text = memo.content
-        cell.detailTextLabel?.text = dateFormatter.string(from: memo.insertDate)
+        cell.detailTextLabel?.text = dateFormatter.string(for: memo.insertDate)
         
         return cell
     }
