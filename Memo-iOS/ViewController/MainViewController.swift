@@ -10,6 +10,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    // MARK: Properties
     @IBOutlet weak var tableView: UITableView!
     let searchController = UISearchController(searchResultsController: nil)
     
@@ -22,27 +23,51 @@ class MainViewController: UIViewController {
         
     }()
     
+    // 옵저버 해제할 때 쓰는 속성 token
+    var token: NSObjectProtocol?
+    
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
+        token = NotificationCenter.default.addObserver(forName: ComposeViewController.newMemoDidInsert,
+                                               object: nil,
+                                               queue: OperationQueue.main) { [weak self] noti in
+            self?.tableView.reloadData()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+//        tableView.reloadData()
+    }
+    
+    // 옵저버를 계속 관찰하고 있으면 메모리가 낭비되기 때문에 view가 사라지기 전 혹은 해제될 때 옵저버 관찰을 해제한다
+    deinit {
+        if let token = token {
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
+    
+    
+    // MARK: Method
+    func configureUI() {
         tableView.layer.cornerRadius = 10
         view.backgroundColor = #colorLiteral(red: 0.9184874892, green: 0.9130274653, blue: 0.9226844907, alpha: 1)
         tableView.delegate = self
         tableView.dataSource = self
         
         navigationItem.searchController = searchController
-
+        
         self.navigationController?.navigationBar.tintColor = UIColor(named: "AccentColor")
+        
     }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.panGestureRecognizer.translation(in: scrollView).y < 0 {
-            navigationController?.setNavigationBarHidden(true, animated: true)
-        } else {
-            navigationController?.setNavigationBarHidden(false, animated: true)
-        }
-    }
+
 }
 
+
+
+// MARK: - Extension
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Memo.dummyMemoList.count
