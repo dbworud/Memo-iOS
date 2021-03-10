@@ -32,7 +32,20 @@ class ComposeViewController: UIViewController {
     
      
     @IBAction func addLineOrGrid(_ sender: Any) {
-        actionSheet()
+        
+//        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//
+//        let addLineOrGrid = UIAlertAction(title: "줄 및 격자", style: .default) { _ in
+//
+//            self.navigationController?.pushViewController(SelectThemeViewController(), animated: true)
+//        }
+//        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+//
+//        alert.addAction(addLineOrGrid)
+//        alert.addAction(cancel)
+//        alert.view.tintColor = UIColor(named: "AccentColor")
+//
+//        present(alert, animated: false, completion: nil)
     }
     
 }

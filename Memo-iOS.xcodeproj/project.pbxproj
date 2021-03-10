@@ -17,6 +17,8 @@
 		4F2E148F25F85D6000DBB522 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E148E25F85D6000DBB522 /* MainViewController.swift */; };
 		4F2E149225F85D6B00DBB522 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E149125F85D6B00DBB522 /* ComposeViewController.swift */; };
 		4F39121025F877E700B6AF55 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39120F25F877E700B6AF55 /* UIViewController+Alert.swift */; };
+		4F39121725F8812200B6AF55 /* SelectThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39121625F8812200B6AF55 /* SelectThemeViewController.swift */; };
+		4F39121A25F883C400B6AF55 /* UIButton+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39121925F883C400B6AF55 /* UIButton+Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		4F2E148E25F85D6000DBB522 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4F2E149125F85D6B00DBB522 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		4F39120F25F877E700B6AF55 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		4F39121625F8812200B6AF55 /* SelectThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectThemeViewController.swift; sourceTree = "<group>"; };
+		4F39121925F883C400B6AF55 /* UIButton+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Theme.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 			children = (
 				4F2E148E25F85D6000DBB522 /* MainViewController.swift */,
 				4F2E149125F85D6B00DBB522 /* ComposeViewController.swift */,
+				4F39121625F8812200B6AF55 /* SelectThemeViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -99,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				4F39120F25F877E700B6AF55 /* UIViewController+Alert.swift */,
+				4F39121925F883C400B6AF55 /* UIButton+Theme.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -173,10 +179,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F39121A25F883C400B6AF55 /* UIButton+Theme.swift in Sources */,
 				4F2E147A25F856F600DBB522 /* Memo_iOS.xcdatamodeld in Sources */,
 				4F2E147025F856F600DBB522 /* AppDelegate.swift in Sources */,
 				4F2E147225F856F600DBB522 /* SceneDelegate.swift in Sources */,
 				4F2E149225F85D6B00DBB522 /* ComposeViewController.swift in Sources */,
+				4F39121725F8812200B6AF55 /* SelectThemeViewController.swift in Sources */,
 				4F2E148A25F8577800DBB522 /* Memo.swift in Sources */,
 				4F2E148F25F85D6000DBB522 /* MainViewController.swift in Sources */,
 				4F39121025F877E700B6AF55 /* UIViewController+Alert.swift in Sources */,
