@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -45,6 +46,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="WzJ-mt-87I" kind="show" id="Pdg-d2-5x6"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -84,6 +88,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="710.14492753623199" y="88.392857142857139"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="2qC-SD-66H">
+            <objects>
+                <viewController id="WzJ-mt-87I" customClass="DetailViewController" customModule="Memo_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r6B-Go-NJY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNf-2a-f7G">
+                                <rect key="frame" x="189" y="98" width="36" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fTk-LT-wHL">
+                                <rect key="frame" x="20" y="128.5" width="374" height="733.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxW-Zt-5gB">
+                                <rect key="frame" x="353.5" y="810" width="30.5" height="22"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="camera.fill" catalog="system" symbolScale="large"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="obg-m9-Ecf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="obg-m9-Ecf" firstAttribute="bottom" secondItem="cxW-Zt-5gB" secondAttribute="bottom" constant="30" id="4pp-8r-6sB"/>
+                            <constraint firstItem="obg-m9-Ecf" firstAttribute="bottom" secondItem="fTk-LT-wHL" secondAttribute="bottom" id="8Qx-jI-2VH"/>
+                            <constraint firstItem="fTk-LT-wHL" firstAttribute="leading" secondItem="obg-m9-Ecf" secondAttribute="leading" constant="20" id="D6M-iz-rZU"/>
+                            <constraint firstItem="fTk-LT-wHL" firstAttribute="top" secondItem="oNf-2a-f7G" secondAttribute="bottom" constant="10" id="QAc-FE-Xk8"/>
+                            <constraint firstItem="oNf-2a-f7G" firstAttribute="top" secondItem="obg-m9-Ecf" secondAttribute="top" constant="10" id="f85-7l-BZm"/>
+                            <constraint firstItem="obg-m9-Ecf" firstAttribute="trailing" secondItem="cxW-Zt-5gB" secondAttribute="trailing" constant="30" id="iLe-i4-lKi"/>
+                            <constraint firstItem="oNf-2a-f7G" firstAttribute="centerX" secondItem="r6B-Go-NJY" secondAttribute="centerX" id="jTi-9N-y9i"/>
+                            <constraint firstItem="obg-m9-Ecf" firstAttribute="trailing" secondItem="fTk-LT-wHL" secondAttribute="trailing" constant="20" id="zQZ-xs-i3J"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="OUW-F0-Ysn">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis.circle" catalog="system" id="OMw-Ce-cLv">
+                            <color key="tintColor" name="AccentColor"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="contentTextView" destination="fTk-LT-wHL" id="6hW-bz-qc4"/>
+                        <outlet property="dateLabel" destination="oNf-2a-f7G" id="8yi-1U-Vet"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YcL-vv-GHR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1564" y="452"/>
         </scene>
         <!--Compose View Controller-->
         <scene sceneID="lWc-z8-gzc">
@@ -295,9 +355,10 @@
     </scenes>
     <color key="tintColor" name="AccentColor"/>
     <resources>
+        <image name="camera.fill" catalog="system" width="128" height="94"/>
         <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
-            <color red="0.76060940520931974" green="0.62843943341723074" blue="0.33929940749246168" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.76099997758865356" green="0.62800002098083496" blue="0.33899998664855957" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

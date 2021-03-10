@@ -42,6 +42,15 @@ class MainViewController: UIViewController {
 //        tableView.reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // sender활용해서 몇 번째 셀이 선택됐는지 알아야 함
+        if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
+            if let vc = segue.destination as?  DetailViewController {
+                vc.memo = Memo.dummyMemoList[indexPath.row]
+            }
+        }
+    }
+    
     // 옵저버를 계속 관찰하고 있으면 메모리가 낭비되기 때문에 view가 사라지기 전 혹은 해제될 때 옵저버 관찰을 해제한다
     deinit {
         if let token = token {
