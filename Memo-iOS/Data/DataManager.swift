@@ -47,14 +47,13 @@ class DataManager {
         saveContext()
     }
     
-    func updateMemo(memo: Memo) {
-        let existMemo = Memo(context: mainContext)
-        existMemo.content = memo.content
-        existMemo.insertDate = Date()
- 
-        saveContext()
+
+    func deleteMemo(_ memo: Memo?) {
+        if let memo = memo {
+            mainContext.delete(memo)
+            saveContext()
+        }
     }
-    
     
     // MARK: - Core Data stack
 

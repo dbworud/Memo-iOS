@@ -74,11 +74,10 @@ class MainViewController: UIViewController {
         navigationItem.searchController = searchController
         
         self.navigationController?.navigationBar.tintColor = UIColor(named: "AccentColor")
-        
     }
+    
 
 }
-
 
 
 // MARK: - Extension
@@ -95,6 +94,43 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         cell.detailTextLabel?.text = dateFormatter.string(for: memo.insertDate)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .normal, title: "", handler: { _,_,_  in
+                
+                let memo = DataManager.shared.memoList[indexPath.row]
+                
+                DataManager.shared.deleteMemo(memo)
+                
+                DataManager.shared.memoList.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            })
+
+        if #available(iOS 13.0, *) {
+            deleteAction.image = UIImage(systemName: "trash.fill")
+        } else {
+            deleteAction.title = "Delete"
+        }
+        
+        deleteAction.backgroundColor = .red
+       
+        let shareAction = UIContextualAction(style: .normal, title: "") { (_, _, _) in
+            print("tapped shared")
+            
+            // Share Action
+        }
+        
+        if #available(iOS 13.0, *) {
+            shareAction.image = UIImage(systemName: "square.and.arrow.up")
+        } else {
+            shareAction.title = "Share"
+        }
+        
+        shareAction.backgroundColor = .blue
+        
+        return UISwipeActionsConfiguration(actions: [deleteAction, shareAction])
+        
     }
     
 }

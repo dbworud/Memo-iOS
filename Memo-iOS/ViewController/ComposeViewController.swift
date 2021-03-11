@@ -9,16 +9,20 @@ import UIKit
 
 class ComposeViewController: UIViewController {
     
+    // MARK: Properties
     @IBOutlet weak var memoTextView: UITextView!
     
     var editTarget: Memo? // DetailVC에서 전달받은 Memo
     
+    // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let memo = editTarget {
             navigationItem.title = "메모 편집"
             memoTextView.text = memo.content
+//            originalMemoContent = memo.content
+            
             self.navigationItem.hidesBackButton = true
             let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back))
             self.navigationItem.leftBarButtonItem = newBackButton
@@ -27,6 +31,7 @@ class ComposeViewController: UIViewController {
             memoTextView.text = ""
         }
     }
+
     
     @IBAction func save(_ sender: Any) {
         
@@ -69,10 +74,21 @@ class ComposeViewController: UIViewController {
     }
     
     @objc func back() {
-        // Perform your custom actions
-                // ...
-                // Go back to the previous ViewController
-        self.navigationController?.popViewController(animated: true)
+        
+        let alert = UIAlertController(title: "알림", message: "편집한 내용을 저장할까요?", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "확인", style: .default) { [weak self] action in
+            self?.save(action)
+        }
+        
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel) { [weak self] action in
+            self?.navigationController?.popViewController(animated: true)
+        }
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
