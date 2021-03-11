@@ -106,7 +106,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fTk-LT-wHL">
                                 <rect key="frame" x="20" y="128.5" width="374" height="733.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -132,9 +132,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="OUW-F0-Ysn">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="ellipsis.circle" catalog="system" id="OMw-Ce-cLv">
-                            <color key="tintColor" name="AccentColor"/>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="편집" id="3Fq-dN-s5b">
+                                <color key="tintColor" name="AccentColor"/>
+                                <connections>
+                                    <segue destination="qBl-We-aVi" kind="show" id="VAm-Sh-fzy"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="ellipsis.circle" catalog="system" id="OMw-Ce-cLv">
+                                <color key="tintColor" name="AccentColor"/>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="contentTextView" destination="fTk-LT-wHL" id="6hW-bz-qc4"/>
@@ -144,6 +152,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YcL-vv-GHR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1564" y="452"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Nfq-mP-XRr">
+            <objects>
+                <viewController id="w18-XR-vQf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jGO-ld-s3s">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="IZJ-IQ-pXZ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rfi-RV-3Uy"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ILc-E7-PYt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3630" y="451"/>
         </scene>
         <!--Compose View Controller-->
         <scene sceneID="lWc-z8-gzc">
@@ -352,7 +376,28 @@
             </objects>
             <point key="canvasLocation" x="2565" y="-254"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Nbd-ji-WPH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jZB-O1-dM6" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sos-YN-bXb">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="w18-XR-vQf" kind="relationship" relationship="rootViewController" id="jrm-O8-SRr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L6u-Lg-QUL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2639" y="451"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="VAm-Sh-fzy"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" name="AccentColor"/>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="94"/>

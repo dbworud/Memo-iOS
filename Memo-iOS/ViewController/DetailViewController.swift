@@ -13,7 +13,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
     
-    
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
         df.dateStyle = .long
@@ -22,7 +21,6 @@ class DetailViewController: UIViewController {
         return df
         
     }()
-    
     
     var memo: Memo?
     
@@ -33,7 +31,22 @@ class DetailViewController: UIViewController {
         dateLabel.text = dateFormatter.string(for: memo?.insertDate)
         contentTextView.text = memo?.content
         
+        token = NotificationCenter.default.addObserver(forName: ComposeViewController.memoDidUpdate, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
+            self?.contentTextView.text = self?.memo?.content
+        })
+    }
+
+    var token: NSObjectProtocol?
+    
+    deinit {
+        if let token = token {
+            NotificationCenter.default.removeObserver(token)
+        }
     }
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let vc = segue.destination as? ComposeViewController {
+            vc.editTarget = memo
+        }
+    }
 }

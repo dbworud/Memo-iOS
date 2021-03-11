@@ -11,8 +11,21 @@ class ComposeViewController: UIViewController {
     
     @IBOutlet weak var memoTextView: UITextView!
     
+    var editTarget: Memo? // DetailVC에서 전달받은 Memo
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let memo = editTarget {
+            navigationItem.title = "메모 편집"
+            memoTextView.text = memo.content
+            self.navigationItem.hidesBackButton = true
+            let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back))
+            self.navigationItem.leftBarButtonItem = newBackButton
+        } else {
+            navigationItem.title = "새 메모"
+            memoTextView.text = ""
+        }
     }
     
     @IBAction func save(_ sender: Any) {
@@ -25,9 +38,14 @@ class ComposeViewController: UIViewController {
 //        let newMemo = Memo(content: memo)
 //        Memo.dummyMemoList.append(newMemo)
         
-        DataManager.shared.addNewMemo(memo)
-        
-        NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
+        if let target = editTarget {
+            target.content  = memo
+            DataManager.shared.saveContext()
+            NotificationCenter.default.post(name: ComposeViewController.memoDidUpdate, object: nil)
+        } else {
+            DataManager.shared.addNewMemo(memo)
+            NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
+        }
 
         navigationController?.popViewController(animated: true)
     }
@@ -50,11 +68,18 @@ class ComposeViewController: UIViewController {
 //        present(alert, animated: false, completion: nil)
     }
     
+    @objc func back() {
+        // Perform your custom actions
+                // ...
+                // Go back to the previous ViewController
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 
 
 extension ComposeViewController {
     
     static let newMemoDidInsert = Notification.Name("newMemoDidInsert")
+    static let memoDidUpdate = Notification.Name("memoDidUpdate")
     
 }
