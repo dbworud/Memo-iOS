@@ -44,7 +44,6 @@ class MainViewController: UIViewController {
         // ViewController가 화면에 보여지기 직전에 호출, 네트워크 혹은 데이터 fetch해서 붙여넣기
         DataManager.shared.fetchMemo()
         tableView.reloadData()
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -62,7 +61,7 @@ class MainViewController: UIViewController {
             NotificationCenter.default.removeObserver(token)
         }
     }
-    
+
     
     // MARK: Method
     func configureUI() {
@@ -75,8 +74,6 @@ class MainViewController: UIViewController {
         
         self.navigationController?.navigationBar.tintColor = UIColor(named: "AccentColor")
     }
-    
-
 }
 
 
@@ -97,10 +94,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let memo = DataManager.shared.memoList[indexPath.row]
+        
         let deleteAction = UIContextualAction(style: .normal, title: "", handler: { _,_,_  in
-                
-                let memo = DataManager.shared.memoList[indexPath.row]
-                
+            
                 DataManager.shared.deleteMemo(memo)
                 
                 DataManager.shared.memoList.remove(at: indexPath.row)
@@ -116,9 +113,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         deleteAction.backgroundColor = .red
        
         let shareAction = UIContextualAction(style: .normal, title: "") { (_, _, _) in
-            print("tapped shared")
+            guard let memoContent = memo.content else { return }
             
-            // Share Action
+            let vc = UIActivityViewController(activityItems: [memoContent], applicationActivities: nil)
+            self.present(vc, animated: true, completion: nil)
         }
         
         if #available(iOS 13.0, *) {
@@ -132,6 +130,5 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return UISwipeActionsConfiguration(actions: [deleteAction, shareAction])
         
     }
-    
 }
 

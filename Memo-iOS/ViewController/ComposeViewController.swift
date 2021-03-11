@@ -14,6 +14,10 @@ class ComposeViewController: UIViewController {
     
     var editTarget: Memo? // DetailVC에서 전달받은 Memo
     
+    // 키보드 노티피케이션
+    var willShowToken: NSObjectProtocol?
+    var willHideToken: NSObjectProtocol?
+    
     // MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +25,6 @@ class ComposeViewController: UIViewController {
         if let memo = editTarget {
             navigationItem.title = "메모 편집"
             memoTextView.text = memo.content
-//            originalMemoContent = memo.content
             
             self.navigationItem.hidesBackButton = true
             let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back))
@@ -30,8 +33,63 @@ class ComposeViewController: UIViewController {
             navigationItem.title = "새 메모"
             memoTextView.text = ""
         }
+        
+        
+        // 키보드 높이만큼 여백 추가
+        willShowToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main, using: { [weak self] noti in
+            // 기기마다 다르기 때문에 noti로 높이 구하기
+            guard let `self` = self else { return }
+            
+            if let frame = noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+                let height = frame.cgRectValue.height // 키보드 높이 저장
+                var inset = self.memoTextView.contentInset
+                
+                inset.bottom = height
+                self.memoTextView.contentInset = inset
+                
+                // 스크롤바에도 같은 크기의 여백 추가
+                inset = self.memoTextView.scrollIndicatorInsets
+                inset.bottom = height
+                self.memoTextView.scrollIndicatorInsets = inset
+            }
+        })
+        
+        // 키보드 사라지면 여백 제거
+        willHideToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: OperationQueue.main, using: { [weak self] noti in
+            
+            guard let `self` = self else { return }
+            
+            var inset = self.memoTextView.contentInset
+            inset.bottom = 0
+            self.memoTextView.contentInset = inset
+            
+            inset = self.memoTextView.scrollIndicatorInsets
+            inset.bottom = 0
+            self.memoTextView.scrollIndicatorInsets = inset
+            
+        })
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.memoTextView.becomeFirstResponder() // 입력포커스가 textView가 되어 keyboard 자동으로 올라옴
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.memoTextView.resignFirstResponder() // 입력포커스 제거 keyboard 제거
+    }
+    
+    deinit {
+        if let token = willShowToken {
+            NotificationCenter.default.removeObserver(token)
+        }
+        
+        if let token = willHideToken {
+            NotificationCenter.default.removeObserver(token)
+        }
+    }
+    
     
     @IBAction func save(_ sender: Any) {
         
