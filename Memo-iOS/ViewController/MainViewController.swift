@@ -61,12 +61,26 @@ class MainViewController: UIViewController {
             NotificationCenter.default.removeObserver(token)
         }
     }
-
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        
+        if UITraitCollection.current.userInterfaceStyle == .dark {
+            view.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        } else {
+            view.backgroundColor = #colorLiteral(red: 0.9184874892, green: 0.9130274653, blue: 0.9226844907, alpha: 1)
+        }
+    }
     
     // MARK: Method
     func configureUI() {
         tableView.layer.cornerRadius = 10
-        view.backgroundColor = #colorLiteral(red: 0.9184874892, green: 0.9130274653, blue: 0.9226844907, alpha: 1)
+        
+        if UITraitCollection.current.userInterfaceStyle == .dark {
+            view.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        } else {
+            view.backgroundColor = #colorLiteral(red: 0.9184874892, green: 0.9130274653, blue: 0.9226844907, alpha: 1)
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
         

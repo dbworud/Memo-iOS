@@ -103,32 +103,32 @@
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fTk-LT-wHL">
-                                <rect key="frame" x="20" y="128.5" width="374" height="733.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cxW-Zt-5gB">
                                 <rect key="frame" x="353.5" y="810" width="30.5" height="22"/>
                                 <state key="normal">
                                     <imageReference key="image" image="camera.fill" catalog="system" symbolScale="large"/>
                                 </state>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jPB-q9-3V5">
+                                <rect key="frame" x="20" y="138.5" width="374" height="651.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="obg-m9-Ecf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="obg-m9-Ecf" firstAttribute="bottom" secondItem="cxW-Zt-5gB" secondAttribute="bottom" constant="30" id="4pp-8r-6sB"/>
-                            <constraint firstItem="obg-m9-Ecf" firstAttribute="bottom" secondItem="fTk-LT-wHL" secondAttribute="bottom" id="8Qx-jI-2VH"/>
-                            <constraint firstItem="fTk-LT-wHL" firstAttribute="leading" secondItem="obg-m9-Ecf" secondAttribute="leading" constant="20" id="D6M-iz-rZU"/>
-                            <constraint firstItem="fTk-LT-wHL" firstAttribute="top" secondItem="oNf-2a-f7G" secondAttribute="bottom" constant="10" id="QAc-FE-Xk8"/>
+                            <constraint firstItem="jPB-q9-3V5" firstAttribute="leading" secondItem="obg-m9-Ecf" secondAttribute="leading" constant="20" id="5Bd-UM-pi9"/>
+                            <constraint firstItem="cxW-Zt-5gB" firstAttribute="top" secondItem="jPB-q9-3V5" secondAttribute="bottom" constant="20" id="QaI-5W-e3S"/>
                             <constraint firstItem="oNf-2a-f7G" firstAttribute="top" secondItem="obg-m9-Ecf" secondAttribute="top" constant="10" id="f85-7l-BZm"/>
                             <constraint firstItem="obg-m9-Ecf" firstAttribute="trailing" secondItem="cxW-Zt-5gB" secondAttribute="trailing" constant="30" id="iLe-i4-lKi"/>
                             <constraint firstItem="oNf-2a-f7G" firstAttribute="centerX" secondItem="r6B-Go-NJY" secondAttribute="centerX" id="jTi-9N-y9i"/>
-                            <constraint firstItem="obg-m9-Ecf" firstAttribute="trailing" secondItem="fTk-LT-wHL" secondAttribute="trailing" constant="20" id="zQZ-xs-i3J"/>
+                            <constraint firstItem="obg-m9-Ecf" firstAttribute="trailing" secondItem="jPB-q9-3V5" secondAttribute="trailing" constant="20" id="rVX-eL-sUd"/>
+                            <constraint firstItem="jPB-q9-3V5" firstAttribute="top" secondItem="oNf-2a-f7G" secondAttribute="bottom" constant="20" id="zCG-zy-GNp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="OUW-F0-Ysn">
@@ -145,13 +145,13 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="contentTextView" destination="fTk-LT-wHL" id="6hW-bz-qc4"/>
+                        <outlet property="contentTextView" destination="jPB-q9-3V5" id="HgQ-zf-gfa"/>
                         <outlet property="dateLabel" destination="oNf-2a-f7G" id="8yi-1U-Vet"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YcL-vv-GHR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1564" y="452"/>
+            <point key="canvasLocation" x="1563.768115942029" y="451.33928571428567"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Nfq-mP-XRr">
@@ -348,6 +348,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="sue-5v-ShE">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -396,7 +399,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="a9y-YE-V2P"/>
+        <segue reference="VAm-Sh-fzy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="AccentColor"/>
     <resources>

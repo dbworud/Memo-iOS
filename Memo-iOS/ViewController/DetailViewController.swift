@@ -34,9 +34,11 @@ class DetailViewController: UIViewController {
 
         dateLabel.text = dateFormatter.string(for: memo?.insertDate)
         contentTextView.text = memo?.content
+        contentTextView.isEditable = false
         
         token = NotificationCenter.default.addObserver(forName: ComposeViewController.memoDidUpdate, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
             self?.contentTextView.text = self?.memo?.content
+            self?.dateLabel.text = self?.dateFormatter.string(for: self?.memo?.insertDate)
         })
         
         willShowToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main, using: { [weak self] noti in

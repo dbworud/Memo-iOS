@@ -26,6 +26,7 @@ class ComposeViewController: UIViewController {
             navigationItem.title = "메모 편집"
             memoTextView.text = memo.content
             
+            
             self.navigationItem.hidesBackButton = true
             let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back))
             self.navigationItem.leftBarButtonItem = newBackButton
@@ -98,11 +99,14 @@ class ComposeViewController: UIViewController {
             return
         }
         
+        let insertDate = Date()
+        
 //        let newMemo = Memo(content: memo)
 //        Memo.dummyMemoList.append(newMemo)
         
         if let target = editTarget {
             target.content  = memo
+            target.insertDate = insertDate
             DataManager.shared.saveContext()
             NotificationCenter.default.post(name: ComposeViewController.memoDidUpdate, object: nil)
         } else {
