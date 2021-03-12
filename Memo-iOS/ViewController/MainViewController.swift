@@ -56,7 +56,12 @@ class MainViewController: UIViewController {
         // sender활용해서 몇 번째 셀이 선택됐는지 알아야 함
         if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
             if let vc = segue.destination as?  DetailViewController {
-                vc.memo = DataManager.shared.memoList[indexPath.row]
+
+                if isFiltering {
+                    vc.memo = filteredMemo[indexPath.row]
+                } else {
+                    vc.memo = DataManager.shared.memoList[indexPath.row]
+                }
             }
         }
     }
