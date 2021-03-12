@@ -11,6 +11,7 @@ class ComposeViewController: UIViewController {
     
     // MARK: Properties
     @IBOutlet weak var memoTextView: UITextView!
+    @IBOutlet weak var imageView: UIImageView!
     
     var editTarget: Memo? // DetailVC에서 전달받은 Memo
     
@@ -25,7 +26,6 @@ class ComposeViewController: UIViewController {
         if let memo = editTarget {
             navigationItem.title = "메모 편집"
             memoTextView.text = memo.content
-            
             
             self.navigationItem.hidesBackButton = true
             let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back))
@@ -90,8 +90,7 @@ class ComposeViewController: UIViewController {
             NotificationCenter.default.removeObserver(token)
         }
     }
-    
-    
+
     @IBAction func save(_ sender: Any) {
         
         guard let memo = memoTextView.text, memo.count > 0 else {
@@ -104,15 +103,21 @@ class ComposeViewController: UIViewController {
 //        let newMemo = Memo(content: memo)
 //        Memo.dummyMemoList.append(newMemo)
         
+        if let imageData = imageView.image?.pngData() {
+            DataManager.shared.saveImage(data: imageData)
+        }
+        
         if let target = editTarget {
             target.content  = memo
             target.insertDate = insertDate
             DataManager.shared.saveContext()
             NotificationCenter.default.post(name: ComposeViewController.memoDidUpdate, object: nil)
         } else {
+        
             DataManager.shared.addNewMemo(memo)
             NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
         }
+        
 
         navigationController?.popViewController(animated: true)
     }
@@ -152,6 +157,16 @@ class ComposeViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+    
+    
+    @IBAction func cameraButtonTapped(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true)
+        
+    }
 }
 
 
@@ -160,4 +175,15 @@ extension ComposeViewController {
     static let newMemoDidInsert = Notification.Name("newMemoDidInsert")
     static let memoDidUpdate = Notification.Name("memoDidUpdate")
     
+}
+
+extension ComposeViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        guard let userPickedImage = info[.editedImage] as? UIImage else { return }
+        imageView.image = userPickedImage
+        imageView.contentMode = .scaleToFill
+        picker.dismiss(animated: true, completion: nil)
+    }
 }

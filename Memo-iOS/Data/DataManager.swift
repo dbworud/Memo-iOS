@@ -5,7 +5,7 @@
 //  Created by jaekyung you on 2021/03/10.
 //
 
-import Foundation
+import UIKit
 import CoreData
 
 class DataManager {
@@ -52,6 +52,20 @@ class DataManager {
         if let memo = memo {
             mainContext.delete(memo)
             saveContext()
+        }
+    }
+    
+    // Save image
+    func saveImage(data: Data) {
+        let memo = Memo(context: mainContext)
+        memo.image = data
+        
+        do {
+            try saveContext()
+            print("Image Saved")
+            
+        } catch {
+            print(error.localizedDescription)
         }
     }
     

@@ -28,7 +28,7 @@ class MainViewController: UIViewController {
         return df
         
     }()
-    
+
     // 옵저버 해제할 때 쓰는 속성 token
     var token: NSObjectProtocol?
     
@@ -50,6 +50,10 @@ class MainViewController: UIViewController {
         // ViewController가 화면에 보여지기 직전에 호출, 네트워크 혹은 데이터 fetch해서 붙여넣기
         DataManager.shared.fetchMemo()
         tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

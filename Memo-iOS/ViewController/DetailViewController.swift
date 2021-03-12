@@ -12,6 +12,7 @@ class DetailViewController: UIViewController {
     // MARK: Properties
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var imageView: UIImageView!
     
     let dateFormatter: DateFormatter = {
         let df = DateFormatter()
@@ -36,9 +37,13 @@ class DetailViewController: UIViewController {
         contentTextView.text = memo?.content
         contentTextView.isEditable = false
         
+        // Image View!~
+        
+
         token = NotificationCenter.default.addObserver(forName: ComposeViewController.memoDidUpdate, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
             self?.contentTextView.text = self?.memo?.content
             self?.dateLabel.text = self?.dateFormatter.string(for: self?.memo?.insertDate)
+            // Image View ~~
         })
         
         willShowToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main, using: { [weak self] noti in

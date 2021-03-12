@@ -102,23 +102,32 @@
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jPB-q9-3V5">
-                                <rect key="frame" x="20" y="138.5" width="374" height="723.5"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jPB-q9-3V5">
+                                <rect key="frame" x="20" y="138.5" width="374" height="437.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EnH-cn-FAH">
+                                <rect key="frame" x="20" y="596" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="2Hb-9R-7qI"/>
+                                    <constraint firstAttribute="width" constant="200" id="7LQ-EE-VdS"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="obg-m9-Ecf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="jPB-q9-3V5" firstAttribute="leading" secondItem="obg-m9-Ecf" secondAttribute="leading" constant="20" id="5Bd-UM-pi9"/>
+                            <constraint firstItem="EnH-cn-FAH" firstAttribute="top" secondItem="jPB-q9-3V5" secondAttribute="bottom" constant="20" id="CJt-ms-yDf"/>
+                            <constraint firstItem="EnH-cn-FAH" firstAttribute="leading" secondItem="obg-m9-Ecf" secondAttribute="leading" constant="20" id="P2c-qb-YnN"/>
                             <constraint firstItem="oNf-2a-f7G" firstAttribute="top" secondItem="obg-m9-Ecf" secondAttribute="top" constant="10" id="f85-7l-BZm"/>
+                            <constraint firstItem="obg-m9-Ecf" firstAttribute="bottom" secondItem="EnH-cn-FAH" secondAttribute="bottom" constant="66" id="jJL-Ul-rXD"/>
                             <constraint firstItem="oNf-2a-f7G" firstAttribute="centerX" secondItem="r6B-Go-NJY" secondAttribute="centerX" id="jTi-9N-y9i"/>
                             <constraint firstItem="obg-m9-Ecf" firstAttribute="trailing" secondItem="jPB-q9-3V5" secondAttribute="trailing" constant="20" id="rVX-eL-sUd"/>
-                            <constraint firstItem="obg-m9-Ecf" firstAttribute="bottom" secondItem="jPB-q9-3V5" secondAttribute="bottom" id="v9A-rx-2XO"/>
                             <constraint firstItem="jPB-q9-3V5" firstAttribute="top" secondItem="oNf-2a-f7G" secondAttribute="bottom" constant="20" id="zCG-zy-GNp"/>
                         </constraints>
                     </view>
@@ -138,6 +147,7 @@
                     <connections>
                         <outlet property="contentTextView" destination="jPB-q9-3V5" id="HgQ-zf-gfa"/>
                         <outlet property="dateLabel" destination="oNf-2a-f7G" id="8yi-1U-Vet"/>
+                        <outlet property="imageView" destination="EnH-cn-FAH" id="QjB-dH-GGF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YcL-vv-GHR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -168,10 +178,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="G0a-bv-Hzw">
-                                <rect key="frame" x="0.0" y="88" width="414" height="702"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="G0a-bv-Hzw">
+                                <rect key="frame" x="0.0" y="88" width="414" height="482"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -181,17 +191,29 @@
                                 <state key="normal" image="camera.fill" catalog="system">
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
+                                <connections>
+                                    <action selector="cameraButtonTapped:" destination="qBl-We-aVi" eventType="touchUpInside" id="IQH-Ne-R4u"/>
+                                </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nir-Od-hGh">
+                                <rect key="frame" x="20" y="590" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="leJ-eG-8B7"/>
+                                    <constraint firstAttribute="height" constant="200" id="qoI-nA-zZZ"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PwO-jU-z2T"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Nir-Od-hGh" firstAttribute="top" secondItem="G0a-bv-Hzw" secondAttribute="bottom" constant="20" id="Edh-PC-I3I"/>
                             <constraint firstItem="PwO-jU-z2T" firstAttribute="trailing" secondItem="G0a-bv-Hzw" secondAttribute="trailing" id="Jlk-bT-jB7"/>
                             <constraint firstItem="PwO-jU-z2T" firstAttribute="bottom" secondItem="kdl-jk-qFn" secondAttribute="bottom" constant="30" id="KgM-f7-XpZ"/>
                             <constraint firstItem="PwO-jU-z2T" firstAttribute="trailing" secondItem="kdl-jk-qFn" secondAttribute="trailing" constant="30" id="Pkz-72-UqI"/>
-                            <constraint firstItem="kdl-jk-qFn" firstAttribute="top" secondItem="G0a-bv-Hzw" secondAttribute="bottom" constant="20" id="YmT-2s-rja"/>
+                            <constraint firstItem="kdl-jk-qFn" firstAttribute="top" secondItem="Nir-Od-hGh" secondAttribute="bottom" constant="20" id="a6D-A5-YGF"/>
                             <constraint firstItem="G0a-bv-Hzw" firstAttribute="leading" secondItem="PwO-jU-z2T" secondAttribute="leading" id="oPR-9x-HWQ"/>
                             <constraint firstItem="G0a-bv-Hzw" firstAttribute="top" secondItem="PwO-jU-z2T" secondAttribute="top" id="var-Hk-k2S"/>
+                            <constraint firstItem="Nir-Od-hGh" firstAttribute="leading" secondItem="PwO-jU-z2T" secondAttribute="leading" constant="20" id="zLz-du-Elj"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="ECc-1W-9tl">
@@ -212,6 +234,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="imageView" destination="Nir-Od-hGh" id="pnp-du-9Sc"/>
                         <outlet property="memoTextView" destination="G0a-bv-Hzw" id="R1D-WL-WNe"/>
                     </connections>
                 </viewController>
