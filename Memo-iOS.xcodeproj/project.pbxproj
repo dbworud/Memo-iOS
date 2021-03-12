@@ -13,7 +13,6 @@
 		4F2E147A25F856F600DBB522 /* Memo_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E147825F856F600DBB522 /* Memo_iOS.xcdatamodeld */; };
 		4F2E147C25F856F800DBB522 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4F2E147B25F856F800DBB522 /* Assets.xcassets */; };
 		4F2E147F25F856F800DBB522 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F2E147D25F856F800DBB522 /* LaunchScreen.storyboard */; };
-		4F2E148A25F8577800DBB522 /* Memo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E148925F8577800DBB522 /* Memo.swift */; };
 		4F2E148F25F85D6000DBB522 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E148E25F85D6000DBB522 /* MainViewController.swift */; };
 		4F2E149225F85D6B00DBB522 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E149125F85D6B00DBB522 /* ComposeViewController.swift */; };
 		4F39121025F877E700B6AF55 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39120F25F877E700B6AF55 /* UIViewController+Alert.swift */; };
@@ -33,7 +32,6 @@
 		4F2E147B25F856F800DBB522 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4F2E147E25F856F800DBB522 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4F2E148025F856F800DBB522 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4F2E148925F8577800DBB522 /* Memo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Memo.swift; sourceTree = "<group>"; };
 		4F2E148E25F85D6000DBB522 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4F2E149125F85D6B00DBB522 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		4F39120F25F877E700B6AF55 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
@@ -77,7 +75,6 @@
 				4F39122425F8E25000B6AF55 /* Data */,
 				4F39120E25F877D700B6AF55 /* Extension */,
 				4F2E148825F8575A00DBB522 /* ViewController */,
-				4F2E148725F8575500DBB522 /* Model */,
 				4F2E146F25F856F600DBB522 /* AppDelegate.swift */,
 				4F2E147125F856F600DBB522 /* SceneDelegate.swift */,
 				4F2E147525F856F600DBB522 /* Main.storyboard */,
@@ -87,14 +84,6 @@
 				4F2E147825F856F600DBB522 /* Memo_iOS.xcdatamodeld */,
 			);
 			path = "Memo-iOS";
-			sourceTree = "<group>";
-		};
-		4F2E148725F8575500DBB522 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				4F2E148925F8577800DBB522 /* Memo.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		4F2E148825F8575A00DBB522 /* ViewController */ = {
@@ -204,7 +193,6 @@
 				4F2E149225F85D6B00DBB522 /* ComposeViewController.swift in Sources */,
 				4F39122125F89FB900B6AF55 /* DateFormatter+Locale.swift in Sources */,
 				4F39121725F8812200B6AF55 /* SelectThemeViewController.swift in Sources */,
-				4F2E148A25F8577800DBB522 /* Memo.swift in Sources */,
 				4F39121D25F898FB00B6AF55 /* DetailViewController.swift in Sources */,
 				4F2E148F25F85D6000DBB522 /* MainViewController.swift in Sources */,
 				4F39121025F877E700B6AF55 /* UIViewController+Alert.swift in Sources */,

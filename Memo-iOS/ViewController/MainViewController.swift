@@ -13,6 +13,12 @@ class MainViewController: UIViewController {
     // MARK: Properties
     @IBOutlet weak var tableView: UITableView!
     let searchController = UISearchController(searchResultsController: nil)
+    var filteredMemo = [Memo]()
+    var allMemo = DataManager.shared.memoList
+    
+    var isFiltering: Bool {
+        return searchController.isActive && !self.isSearchBarEmpty()
+    }
     
     let dateFormatter: DateFormatter = {
        let df = DateFormatter()
@@ -84,9 +90,24 @@ class MainViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        navigationItem.searchController = searchController
-        
         self.navigationController?.navigationBar.tintColor = UIColor(named: "AccentColor")
+        
+        navigationItem.searchController = searchController
+        searchController.searchResultsUpdater = self // UISearchBar 내의 텍스트가 변경되는 것을 알림
+        searchController.searchBar.placeholder = "Search"
+        searchController.obscuresBackgroundDuringPresentation = false // 다른 뷰 컨트롤러를 사용할 경우 true로 설정하여 유용
+        definesPresentationContext = true // UISearchController가 활성화되어있는 동안, 사용자가 다른 뷰 컨트롤러로 이동하면 search bar가 화면에 남아있지 않도록
+    }
+    
+    func isSearchBarEmpty() -> Bool {
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func filterContentsForSearchText(_ searchText: String, scope: String? = "All") {
+        filteredMemo = DataManager.shared.memoList.filter{ (memo: Memo) -> Bool in
+            return (memo.content?.lowercased().contains(searchText.lowercased()))!
+        }
+        tableView.reloadData()
     }
 }
 
@@ -94,13 +115,25 @@ class MainViewController: UIViewController {
 // MARK: - Extension
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DataManager.shared.memoList.count
+        if isFiltering {
+            return filteredMemo.count
+        } else {
+            return DataManager.shared.memoList.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemoCell", for: indexPath)
+        let memo: Memo
         
-        let memo = DataManager.shared.memoList[indexPath.row]
+//        let memo = DataManager.shared.memoList[indexPath.row]
+        
+        if isFiltering {
+            memo = filteredMemo[indexPath.row]
+        } else {
+            memo = DataManager.shared.memoList[indexPath.row]
+        }
         cell.textLabel?.text = memo.content
         cell.detailTextLabel?.text = dateFormatter.string(for: memo.insertDate)
         
@@ -146,3 +179,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+
+extension MainViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentsForSearchText(searchController.searchBar.text!)
+    }
+}
