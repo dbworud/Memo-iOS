@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ComposeViewController: UIViewController {
     
@@ -14,6 +15,7 @@ class ComposeViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     var editTarget: Memo? // DetailVC에서 전달받은 Memo
+    var memo: Memo!
     
     // 키보드 노티피케이션
     var willShowToken: NSObjectProtocol?
@@ -26,6 +28,10 @@ class ComposeViewController: UIViewController {
         if let memo = editTarget {
             navigationItem.title = "메모 편집"
             memoTextView.text = memo.content
+           
+            if let memoImage = memo.image {
+                imageView.image = UIImage(data: memoImage)
+            }
             
             self.navigationItem.hidesBackButton = true
             let newBackButton = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(back))
@@ -99,45 +105,26 @@ class ComposeViewController: UIViewController {
         }
         
         let insertDate = Date()
-        
-//        let newMemo = Memo(content: memo)
-//        Memo.dummyMemoList.append(newMemo)
-        
-        if let imageData = imageView.image?.pngData() {
-            DataManager.shared.saveImage(data: imageData)
-        }
-        
+
         if let target = editTarget {
             target.content  = memo
             target.insertDate = insertDate
+            
+            if let memoImage = imageView?.image?.pngData() {
+                target.image = memoImage
+            }
+
             DataManager.shared.saveContext()
             NotificationCenter.default.post(name: ComposeViewController.memoDidUpdate, object: nil)
         } else {
-        
-            DataManager.shared.addNewMemo(memo)
+
+            let memoImage = imageView?.image?.pngData()
+            
+            DataManager.shared.addNewMemo(memo, image: memoImage)
             NotificationCenter.default.post(name: ComposeViewController.newMemoDidInsert, object: nil)
         }
-        
-
-        navigationController?.popViewController(animated: true)
-    }
     
-     
-    @IBAction func addLineOrGrid(_ sender: Any) {
-        
-//        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-//
-//        let addLineOrGrid = UIAlertAction(title: "줄 및 격자", style: .default) { _ in
-//
-//            self.navigationController?.pushViewController(SelectThemeViewController(), animated: true)
-//        }
-//        let cancel = UIAlertAction(title: "취소", style: .cancel, handler: nil)
-//
-//        alert.addAction(addLineOrGrid)
-//        alert.addAction(cancel)
-//        alert.view.tintColor = UIColor(named: "AccentColor")
-//
-//        present(alert, animated: false, completion: nil)
+        navigationController?.popViewController(animated: true)
     }
     
     @objc func back() {

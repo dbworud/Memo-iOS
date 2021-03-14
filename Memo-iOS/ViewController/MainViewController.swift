@@ -114,7 +114,11 @@ class MainViewController: UIViewController {
     
     func filterContentsForSearchText(_ searchText: String, scope: String? = "All") {
         filteredMemo = DataManager.shared.memoList.filter{ (memo: Memo) -> Bool in
-            return (memo.content?.lowercased().contains(searchText.lowercased()))!
+            if let memoContent = memo.content {
+                return memoContent.lowercased().contains(searchText.lowercased())
+            } else {
+                return false
+            }
         }
         tableView.reloadData()
     }

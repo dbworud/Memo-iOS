@@ -36,14 +36,16 @@ class DataManager {
     }
     
     // 새로운 메모 추가하기
-    func addNewMemo(_ memo: String?) {
+    func addNewMemo(_ memo: String?, image: Data?) {
         
         let newMemo = Memo(context: mainContext)
         newMemo.content = memo
         newMemo.insertDate = Date()
-        
+        if let data = image {
+            newMemo.image = data
+        }
+
         memoList.insert(newMemo, at: 0)
-        
         saveContext()
     }
     
@@ -52,20 +54,6 @@ class DataManager {
         if let memo = memo {
             mainContext.delete(memo)
             saveContext()
-        }
-    }
-    
-    // Save image
-    func saveImage(data: Data) {
-        let memo = Memo(context: mainContext)
-        memo.image = data
-        
-        do {
-            try saveContext()
-            print("Image Saved")
-            
-        } catch {
-            print(error.localizedDescription)
         }
     }
     
@@ -98,5 +86,4 @@ class DataManager {
             }
         }
     }
-    
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class DetailViewController: UIViewController {
 
@@ -23,7 +24,7 @@ class DetailViewController: UIViewController {
         
     }()
     
-    var memo: Memo?
+    var memo: Memo!
     
     // 키보드 노티피케이션
     var willShowToken: NSObjectProtocol?
@@ -34,16 +35,26 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         dateLabel.text = dateFormatter.string(for: memo?.insertDate)
-        contentTextView.text = memo?.content
+        contentTextView.text = memo.content
         contentTextView.isEditable = false
         
-        // Image View!~
-        
+        DispatchQueue.main.async {
+            if let memoImage = self.memo.image {
+                self.imageView.image = UIImage(data: memoImage as Data)
+            } else {
+                print("No image fetch")
+            }
+        }
 
         token = NotificationCenter.default.addObserver(forName: ComposeViewController.memoDidUpdate, object: nil, queue: OperationQueue.main, using: { [weak self] (noti) in
-            self?.contentTextView.text = self?.memo?.content
-            self?.dateLabel.text = self?.dateFormatter.string(for: self?.memo?.insertDate)
-            // Image View ~~
+            self?.contentTextView.text = self?.memo.content
+            self?.dateLabel.text = self?.dateFormatter.string(for: self?.memo.insertDate)
+            
+            if let memoImage = self?.memo.image {
+                self?.imageView.image = UIImage(data: memoImage)
+            } else {
+                print("No Image to be shown")
+            }
         })
         
         willShowToken = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main, using: { [weak self] noti in
