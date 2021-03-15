@@ -26,7 +26,7 @@ class MainViewController: UIViewController {
         df.timeStyle = .short
         df.locale = Locale(identifier: "KO_kr")
         return df
-        
+
     }()
 
     // 옵저버 해제할 때 쓰는 속성 token
@@ -149,7 +149,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         }
         cell.textLabel?.text = memo.content
         cell.detailTextLabel?.text = dateFormatter.string(for: memo.insertDate)
-        
+
         return cell
     }
     

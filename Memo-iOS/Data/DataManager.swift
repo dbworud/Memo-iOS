@@ -21,7 +21,6 @@ class DataManager {
     
     var memoList = [Memo]()
     
-    // 저장된 메모 불러오기
     func fetchMemo() {
         let request: NSFetchRequest<Memo> = Memo.fetchRequest()
         
@@ -35,7 +34,6 @@ class DataManager {
         }
     }
     
-    // 새로운 메모 추가하기
     func addNewMemo(_ memo: String?, image: Data?) {
         
         let newMemo = Memo(context: mainContext)
@@ -49,7 +47,6 @@ class DataManager {
         saveContext()
     }
     
-
     func deleteMemo(_ memo: Memo?) {
         if let memo = memo {
             mainContext.delete(memo)

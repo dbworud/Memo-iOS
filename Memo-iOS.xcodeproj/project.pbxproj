@@ -16,9 +16,7 @@
 		4F2E148F25F85D6000DBB522 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E148E25F85D6000DBB522 /* MainViewController.swift */; };
 		4F2E149225F85D6B00DBB522 /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2E149125F85D6B00DBB522 /* ComposeViewController.swift */; };
 		4F39121025F877E700B6AF55 /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39120F25F877E700B6AF55 /* UIViewController+Alert.swift */; };
-		4F39121A25F883C400B6AF55 /* UIButton+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39121925F883C400B6AF55 /* UIButton+Theme.swift */; };
 		4F39121D25F898FB00B6AF55 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39121C25F898FB00B6AF55 /* DetailViewController.swift */; };
-		4F39122125F89FB900B6AF55 /* DateFormatter+Locale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39122025F89FB900B6AF55 /* DateFormatter+Locale.swift */; };
 		4F39122625F8E25B00B6AF55 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F39122525F8E25B00B6AF55 /* DataManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -34,9 +32,7 @@
 		4F2E148E25F85D6000DBB522 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4F2E149125F85D6B00DBB522 /* ComposeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		4F39120F25F877E700B6AF55 /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
-		4F39121925F883C400B6AF55 /* UIButton+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Theme.swift"; sourceTree = "<group>"; };
 		4F39121C25F898FB00B6AF55 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		4F39122025F89FB900B6AF55 /* DateFormatter+Locale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Locale.swift"; sourceTree = "<group>"; };
 		4F39122525F8E25B00B6AF55 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,8 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				4F39120F25F877E700B6AF55 /* UIViewController+Alert.swift */,
-				4F39121925F883C400B6AF55 /* UIButton+Theme.swift */,
-				4F39122025F89FB900B6AF55 /* DateFormatter+Locale.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -182,13 +176,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F39121A25F883C400B6AF55 /* UIButton+Theme.swift in Sources */,
 				4F39122625F8E25B00B6AF55 /* DataManager.swift in Sources */,
 				4F2E147A25F856F600DBB522 /* Memo_iOS.xcdatamodeld in Sources */,
 				4F2E147025F856F600DBB522 /* AppDelegate.swift in Sources */,
 				4F2E147225F856F600DBB522 /* SceneDelegate.swift in Sources */,
 				4F2E149225F85D6B00DBB522 /* ComposeViewController.swift in Sources */,
-				4F39122125F89FB900B6AF55 /* DateFormatter+Locale.swift in Sources */,
 				4F39121D25F898FB00B6AF55 /* DetailViewController.swift in Sources */,
 				4F2E148F25F85D6000DBB522 /* MainViewController.swift in Sources */,
 				4F39121025F877E700B6AF55 /* UIViewController+Alert.swift in Sources */,
