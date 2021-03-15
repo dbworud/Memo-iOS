@@ -32,7 +32,7 @@ breakpoint를 걸어서 확인
 <이미지와 함께 메모를 저장>   
 <img width="723" alt="breakpoint1" src="https://user-images.githubusercontent.com/59492694/111097173-5e58fe80-8584-11eb-9903-11a2a0f97fc0.png">
 
-<DetailViewController에서 이미지를 불러올 때 nil로 나타남> 
+<DetailViewController에서 이미지를 불러올 때 nil로 나타남>   
 <img width="581" alt="breakpoint2" src="https://user-images.githubusercontent.com/59492694/111097272-906a6080-8584-11eb-8e3b-742ab19e23c0.png">
 
 -> 원인: 메모를 저장할 때, 내용+날짜+이미지를 한번에 저장하는 메소드를 구현했어야하는데 메소드를 분리해서 구현한 점이 문제의 원인   
